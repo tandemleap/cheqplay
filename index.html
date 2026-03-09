@@ -833,10 +833,10 @@
       <h2>If you care about kids, you belong here.</h2>
       <p>You don't need a title or a lot of time. You need to care about this place and the kids growing up in it. There are lots of ways in — ride the Treat Bike, host a block party on your street, join a coalition meeting, or just tell us you're interested and we'll find the right fit.</p>
 
-      <form class="involve-form" onsubmit="handleInvolve(event)">
-        <input type="text" placeholder="Your name" id="involve-name" required />
-        <input type="email" placeholder="Your email" id="involve-email" required />
-        <select id="involve-how">
+      <form class="involve-form" action="https://formspree.io/f/mojkjzea" method="POST">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <select name="how">
           <option value="" disabled selected>How you'd like to help (optional)</option>
           <option>Ride the Treat Bike</option>
           <option>Host a block party</option>
@@ -858,8 +858,8 @@
       <div class="section-label">Stay in the Loop</div>
       <h2>Sign up for updates.</h2>
       <p>Projects, community conversations, and ways to participate — straight to your inbox.</p>
-      <form class="loop-form" onsubmit="handleLoop(event)">
-        <input type="email" placeholder="Email address" id="loop-email" required />
+      <form class="loop-form" action="https://formspree.io/f/mojkjzea" method="POST">
+        <input type="email" name="email" placeholder="Email address" required />
         <button type="submit" class="btn btn-amber" style="background: var(--amber); color: var(--dark);">Sign me up</button>
       </form>
     </div>
