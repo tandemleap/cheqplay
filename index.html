@@ -32,6 +32,52 @@
     }
 
     /* =====================
+       MODE SWITCHING
+    ===================== */
+    body:not(.mode-neighbor) .v-neighbor { display: none; }
+    body.mode-neighbor .v-pro { display: none; }
+
+    /* =====================
+       MODE BAR
+    ===================== */
+    .mode-bar {
+      background: #f0ece4;
+      border-bottom: 1px solid #ddd6c8;
+      padding: 0.65rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .mode-bar-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .mode-btn {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      border: 2px solid #c8c0b4;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .mode-btn:hover {
+      border-color: var(--green);
+      color: var(--dark);
+    }
+    .mode-btn.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: white;
+    }
+
+    /* =====================
        NAV
     ===================== */
     nav {
@@ -631,10 +677,18 @@
       <span class="region-tag">Chequamegon Bay Region, Northern Wisconsin</span>
       <img src="cheqplay-logo.png" alt="CheqPLAY — Chequamegon Partners Learning and Aligning for Youth" class="hero-logo" />
       <h1 class="hero-tagline">This is a good place to grow up.</h1>
-      <p class="hero-sub">CheqPLAY (formerly Planet Youth Chequamegon) is a cross-sector community coalition working to strengthen wellbeing and belonging across the Chequamegon Bay region. We bring together schools, parks and recreation, the public library, human services, mental health providers, law enforcement, parents, and youth to focus on the conditions that help people thrive.</p>
+      <p class="hero-sub v-pro">CheqPLAY (formerly Planet Youth Chequamegon) is a cross-sector community coalition working to strengthen wellbeing and belonging across the Chequamegon Bay region. We bring together schools, parks and recreation, the public library, human services, mental health providers, law enforcement, parents, and youth to focus on the conditions that help people thrive.</p>
+      <p class="hero-sub v-neighbor">CheqPLAY is a group of neighbors, families, and local organizations working together to make the Chequamegon Bay area a great place to grow up. We connect schools, parks, libraries, health services, and community members — all working toward the same goal: kids who feel like they belong here.</p>
       <a href="#involved" class="btn btn-green">Get Involved</a>
     </div>
   </section>
+
+  <!-- READING MODE BAR -->
+  <div class="mode-bar">
+    <span class="mode-bar-label">Reading as:</span>
+    <button class="mode-btn active" id="btn-pro" onclick="setMode('pro')">Partner or professional</button>
+    <button class="mode-btn" id="btn-neighbor" onclick="setMode('neighbor')">Neighbor or family</button>
+  </div>
 
   <svg class="squiggle" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M0,0 C240,60 480,0 720,40 C960,80 1200,20 1440,50 L1440,60 L0,60 Z" fill="#FDF8F2"/>
@@ -646,13 +700,20 @@
       <div class="section-label">Why We Exist</div>
       <h2 class="section-title">Most people want the same thing.</h2>
 
-      <p>They want this to be a good place for kids to grow up. Safe. Connected. Full of things worth doing and people worth knowing. When kids grow up with a real sense of belonging, they tend to become the adults who keep a community steady.</p>
+      <div class="v-pro">
+        <p>They want this to be a good place for kids to grow up. Safe. Connected. Full of things worth doing and people worth knowing. When kids grow up with a real sense of belonging, they tend to become the adults who keep a community steady.</p>
+        <p>What we're hearing and seeing in this community points to a clear challenge. The web of everyday connection that used to hold communities together has thinned. Neighbors do not know each other the way they once did. Borrowing a cup of sugar or a screwdriver has become a "vintage interaction." Public spaces that should feel alive with families sometimes do not. And the organizations that serve youth and families often work hard in parallel, without a shared map.</p>
+        <div class="pull-quote">CheqPLAY exists to rebuild that web, so belonging becomes normal again.</div>
+        <p>Youth wellness today is a generational intervention. The kids who grow up feeling known and rooted in this place become the adults who sustain it.</p>
+      </div>
 
-      <p>What we're hearing and seeing in this community points to a clear challenge. The web of everyday connection that used to hold communities together has thinned. Neighbors do not know each other the way they once did. Borrowing a cup of sugar or a screwdriver has become a "vintage interaction." Public spaces that should feel alive with families sometimes do not. And the organizations that serve youth and families often work hard in parallel, without a shared map.</p>
+      <div class="v-neighbor">
+        <p>They want this to be a safe, connected place where kids can grow up happy and healthy. When young people feel like they truly belong somewhere, they tend to grow into adults who take care of that community.</p>
+        <p>But something has shifted. People don't know their neighbors the way they used to. Everyday connections — borrowing a cup of sugar, watching each other's kids, knowing the names of the people on your block — have faded. Public parks and spaces that used to feel alive with families are quieter now. And the local organizations that help kids often work on their own, without talking to each other.</p>
+        <div class="pull-quote">CheqPLAY exists to rebuild that web, so belonging becomes normal again.</div>
+        <p>When kids grow up feeling known and connected to this place, they become the adults who keep it going.</p>
+      </div>
 
-      <div class="pull-quote">CheqPLAY exists to rebuild that web, so belonging becomes normal again.</div>
-
-      <p>Youth wellness today is a generational intervention. The kids who grow up feeling known and rooted in this place become the adults who sustain it.</p>
     </div>
   </section>
 
@@ -666,32 +727,37 @@
       <div class="how-header">
         <div class="section-label">How We Work</div>
         <h2 class="section-title">Not a program. A process.</h2>
-        <p>We don't drop programs into communities. We listen, design together, act, and learn. Then we do it better.</p>
+        <p class="v-pro">We don't drop programs into communities. We listen, design together, act, and learn. Then we do it better.</p>
+        <p class="v-neighbor">We don't just show up with a ready-made program and call it done. We listen first, build things together with the community, try them out in the real world, and keep making them better.</p>
       </div>
       <div class="steps">
 
         <div class="step">
           <div class="step-num n1">01</div>
           <h3>Listen and learn</h3>
-          <p>Gather and interpret local data and lived experience. In fall 2024, we surveyed 10th graders across the region — and we're putting those results to work.</p>
+          <p class="v-pro">Gather and interpret local data and lived experience. In fall 2024, we surveyed 10th graders across the region — and we're putting those results to work.</p>
+          <p class="v-neighbor">We ask questions and really listen. In fall 2024, we surveyed 10th graders across the region to find out what's actually going on — and we're using what we learned to shape our work.</p>
         </div>
 
         <div class="step">
           <div class="step-num n2">02</div>
           <h3>Design together</h3>
-          <p>Create community-owned responses that fit our reality.</p>
+          <p class="v-pro">Create community-owned responses that fit our reality.</p>
+          <p class="v-neighbor">We bring people together to build solutions that actually fit this community — not a one-size-fits-all plan from somewhere else.</p>
         </div>
 
         <div class="step">
           <div class="step-num n3">03</div>
           <h3>Act in public</h3>
-          <p>Launch practical projects that strengthen connection and wellbeing.</p>
+          <p class="v-pro">Launch practical projects that strengthen connection and wellbeing.</p>
+          <p class="v-neighbor">We try things out in the real world — at neighborhood events, in public spaces, wherever people actually gather.</p>
         </div>
 
         <div class="step">
           <div class="step-num n4">04</div>
           <h3>Learn and improve</h3>
-          <p>Track what changes, adjust, and repeat.</p>
+          <p class="v-pro">Track what changes, adjust, and repeat.</p>
+          <p class="v-neighbor">We pay attention to what's working and what isn't, make changes, and keep going.</p>
         </div>
 
       </div>
@@ -710,9 +776,19 @@
         <div class="section-label">Community in Motion</div>
         <h2>Meet the Treat Bike.</h2>
         <p>It's a pedal-powered ice cream truck, complete with music, and it might be the most important thing we own.</p>
-        <p>When CheqPLAY acquired the Treat Bike last fall, something unexpected happened. People lined up to volunteer to ride it. A retired associate principal. A mom who wasn't sure she was in good enough shape but was willing to try. A teenager who just wanted to be part of something uplifting.</p>
-        <p class="bike-accent">That's the thing about this community. People want to show up.</p>
-        <p>They want to help. They just need a reason, a time, and someone to hand them the handlebars. The Treat Bike rides at neighborhood block parties, community events, and wherever a little music and a lot of ice cream can remind people that their neighbors are worth knowing.</p>
+
+        <div class="v-pro">
+          <p>When CheqPLAY acquired the Treat Bike last fall, something unexpected happened. People lined up to volunteer to ride it. A retired associate principal. A mom who wasn't sure she was in good enough shape but was willing to try. A teenager who just wanted to be part of something uplifting.</p>
+          <p class="bike-accent">That's the thing about this community. People want to show up.</p>
+          <p>They want to help. They just need a reason, a time, and someone to hand them the handlebars. The Treat Bike rides at neighborhood block parties, community events, and wherever a little music and a lot of ice cream can remind people that their neighbors are worth knowing.</p>
+        </div>
+
+        <div class="v-neighbor">
+          <p>When we got the Treat Bike last fall, something great happened — people lined up to volunteer to ride it. A retired school administrator. A mom who wasn't sure she was in good enough shape but gave it a shot. A teenager who just wanted to be part of something fun and good.</p>
+          <p class="bike-accent">That's the thing about this community. People want to show up.</p>
+          <p>They just need a good reason, a time, and someone to hand them the handlebars. The Treat Bike shows up at block parties, community events, and wherever music and free ice cream can bring neighbors together.</p>
+        </div>
+
         <p style="margin-bottom: 1.5rem; font-weight: 700;">Want to ride?</p>
         <a href="#involved" class="btn btn-orange">Volunteer for the Treat Bike</a>
       </div>
@@ -734,7 +810,8 @@
       <div class="focus-header">
         <div class="section-label">What We Focus On</div>
         <h2 class="section-title">Practical building blocks for the long haul.</h2>
-        <p>We focus on the things that matter most to kids and families over the long haul. Prevention science points to four key areas: family, school, peers, and leisure. These shape our work.</p>
+        <p class="v-pro">We focus on the things that matter most to kids and families over the long haul. Prevention science points to four key areas: family, school, peers, and leisure. These shape our work.</p>
+        <p class="v-neighbor">Research shows that a few things matter most for kids growing up well. These are the building blocks we focus on — things that families and communities can actually do something about.</p>
       </div>
       <div class="focus-grid">
 
@@ -742,7 +819,8 @@
           <div class="focus-dot" style="background: var(--green);"></div>
           <div>
             <h3>Belonging and trusted relationships</h3>
-            <p>The foundation everything else is built on.</p>
+            <p class="v-pro">The foundation everything else is built on.</p>
+            <p class="v-neighbor">Kids who feel known and cared for are more likely to thrive. This is the most important thing.</p>
           </div>
         </div>
 
@@ -750,7 +828,8 @@
           <div class="focus-dot" style="background: var(--blue);"></div>
           <div>
             <h3>Strong neighborhoods and everyday neighbor support</h3>
-            <p>Because kids need more adults in their corner than any program can provide.</p>
+            <p class="v-pro">Because kids need more adults in their corner than any program can provide.</p>
+            <p class="v-neighbor">Kids need more caring adults around them than any school or program can provide on its own. That's where neighbors come in.</p>
           </div>
         </div>
 
@@ -758,7 +837,8 @@
           <div class="focus-dot" style="background: var(--amber);"></div>
           <div>
             <h3>Welcoming public spaces where families want to be</h3>
-            <p>Parks, streets, and gathering places that feel alive again. Knowing each other makes us safe. Being safe helps us know each other.</p>
+            <p class="v-pro">Parks, streets, and gathering places that feel alive again. Knowing each other makes us safe. Being safe helps us know each other.</p>
+            <p class="v-neighbor">When parks and public spaces feel welcoming and alive, families show up. When families show up, neighbors get to know each other. When neighbors know each other, everyone feels safer.</p>
           </div>
         </div>
 
@@ -766,7 +846,8 @@
           <div class="focus-dot" style="background: var(--orange);"></div>
           <div>
             <h3>Youth mental health and real-world connection</h3>
-            <p>Especially as face-to-face interaction competes with screens.</p>
+            <p class="v-pro">Especially as face-to-face interaction competes with screens.</p>
+            <p class="v-neighbor">Young people are dealing with more stress and anxiety than ever — especially as screens compete with real-life friendships and activities.</p>
           </div>
         </div>
 
@@ -774,7 +855,8 @@
           <div class="focus-dot" style="background: var(--red);"></div>
           <div>
             <h3>Shared responsibility across sectors</h3>
-            <p>So that the organizations serving this community pull the rope in the same direction.</p>
+            <p class="v-pro">So that the organizations serving this community pull the rope in the same direction.</p>
+            <p class="v-neighbor">Schools, health services, parks, and families all working toward the same goal — instead of each doing their own thing separately.</p>
           </div>
         </div>
 
@@ -792,7 +874,8 @@
       <div class="coalition-header">
         <div class="section-label">Who's at the Table</div>
         <h2 class="section-title">Our Coalition</h2>
-        <p>CheqPLAY is built on the belief that no single organization can shift a community on its own.</p>
+        <p class="v-pro">CheqPLAY is built on the belief that no single organization can shift a community on its own.</p>
+        <p class="v-neighbor">No single school, clinic, or organization can change a whole community by itself. That's why we work together — people and groups from all different parts of community life, all focused on kids.</p>
       </div>
       <div class="partner-grid">
         <div class="partner-chip c-green">Schools</div>
@@ -802,7 +885,7 @@
         <div class="partner-chip c-red">Mental Health Providers</div>
         <div class="partner-chip c-green">Law Enforcement</div>
         <div class="partner-chip c-blue">Food Shelf</div>
-<div class="partner-chip c-red">Community Artists</div>
+        <div class="partner-chip c-red">Community Artists</div>
         <div class="partner-chip c-green">Parents</div>
         <div class="partner-chip c-blue">Youth</div>
       </div>
@@ -821,9 +904,19 @@
     <div class="where-inner">
       <div class="section-label">Where We Work</div>
       <h2 class="section-title">Rooted here. Growing outward.</h2>
-      <p>CheqPLAY currently focuses on Ashland and Bad River, with a clear plan to expand outward across the Chequamegon Bay region over time. But expansion is not simply geographic. Before we grow outward, we need to deepen our own roots.</p>
-      <p>The warning signs are visible to anyone paying attention. Young people scrolling past one of the most remarkable places in America, feeling stuck rather than rooted, disconnected from neighbors, from nature, from any sense that this place is worth their investment. That is the canary in the coal mine. Our answer is to invest deeply in the belonging and connection of kids who grow up here, so they develop the roots to choose this place with clear eyes. To leave if they need to snap the rubber band. To come back not because they are stuck, but because they recognize what they left and choose this place as home.</p>
-      <p>This is what a community looks like when love stops being passive and becomes a plan.</p>
+
+      <div class="v-pro">
+        <p>CheqPLAY currently focuses on Ashland and Bad River, with a clear plan to expand outward across the Chequamegon Bay region over time. But expansion is not simply geographic. Before we grow outward, we need to deepen our own roots.</p>
+        <p>The warning signs are visible to anyone paying attention. Young people scrolling past one of the most remarkable places in America, feeling stuck rather than rooted, disconnected from neighbors, from nature, from any sense that this place is worth their investment. That is the canary in the coal mine. Our answer is to invest deeply in the belonging and connection of kids who grow up here, so they develop the roots to choose this place with clear eyes. To leave if they need to snap the rubber band. To come back not because they are stuck, but because they recognize what they left and choose this place as home.</p>
+        <p>This is what a community looks like when love stops being passive and becomes a plan.</p>
+      </div>
+
+      <div class="v-neighbor">
+        <p>Right now, CheqPLAY is focused on Ashland and Bad River. Over time, we plan to grow across the whole Chequamegon Bay region. But before we spread out, we want to build something real and strong right where we are.</p>
+        <p>We see young people growing up in one of the most beautiful parts of the country — and sometimes not really noticing. Kids who feel disconnected from their neighbors, from the outdoors, and from any sense that this place is worth sticking around for. We want to change that. When kids feel rooted here, they get to choose their own future — whether that means staying, leaving, or coming back someday because they want to, not because they felt stuck.</p>
+        <p>This is what a community looks like when it decides to take care of its own.</p>
+      </div>
+
     </div>
   </section>
 
@@ -836,7 +929,10 @@
     <div class="get-involved-inner">
       <div class="section-label">Get Involved</div>
       <h2>If you care about kids, you belong here.</h2>
-      <p>You don't need a title or a lot of time. You need to care about this place and the kids growing up in it. There are lots of ways in — ride the Treat Bike, host a block party on your street, join a coalition meeting, or just tell us you're interested and we'll find the right fit.</p>
+
+      <p class="v-pro">You don't need a title or a lot of time. You need to care about this place and the kids growing up in it. There are lots of ways in — ride the Treat Bike, host a block party on your street, join a coalition meeting, or just tell us you're interested and we'll find the right fit.</p>
+      <p class="v-neighbor">You don't need a special job or a lot of free time. You just need to care about kids and this community. You can ride the Treat Bike, help with a block party on your street, show up to a meeting, or just let us know you're interested and we'll find a good fit together.</p>
+
       <p style="color: rgba(255,255,255,0.75); font-weight: 600; font-size: 0.95rem; margin-bottom: 1.5rem;">Questions? Contact Rachel, Coalition Coordinator: <a href="mailto:rachel@lightyourspark.org" style="color: white;">rachel@lightyourspark.org</a> or 715-413-1585.</p>
 
       <form class="involve-form" action="https://formspree.io/f/mojkjzea" method="POST">
@@ -885,6 +981,23 @@
   </footer>
 
   <script>
+    function setMode(mode) {
+      if (mode === 'neighbor') {
+        document.body.classList.add('mode-neighbor');
+        document.getElementById('btn-neighbor').classList.add('active');
+        document.getElementById('btn-pro').classList.remove('active');
+      } else {
+        document.body.classList.remove('mode-neighbor');
+        document.getElementById('btn-pro').classList.add('active');
+        document.getElementById('btn-neighbor').classList.remove('active');
+      }
+      localStorage.setItem('cheqplay-mode', mode);
+    }
+
+    // Restore preference on load
+    const saved = localStorage.getItem('cheqplay-mode');
+    if (saved === 'neighbor') setMode('neighbor');
+
     function handleInvolve(e) {
       e.preventDefault();
       e.target.innerHTML = '<p style="color:white;font-weight:700;font-size:1.1rem;text-align:center;">Thanks! We\'ll be in touch soon.</p>';
