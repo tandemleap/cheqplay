@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/programs",
+      "destination": "https://youth-program-locator.vercel.app/programs"
+    },
+    {
+      "source": "/programs/:path*",
+      "destination": "https://youth-program-locator.vercel.app/programs/:path*"
+    }
+  ]
+}

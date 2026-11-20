@@ -45,12 +45,13 @@ Plain HTML/CSS/JS. No framework, no build step. Edit `index.html` directly and p
 4. Why We Exist
 5. How We Work (4 steps)
 6. Treat Bike
-7. What We Focus On (5 focus items)
-8. Our Coalition (partner chips + meeting schedule)
-9. Where We Work
-10. Get Involved (Formspree form)
-11. Stay in the Loop (Formspree email signup)
-12. Footer
+7. Find a Program — links to the Youth Program Locator at /programs (vercel.json rewrites /programs/* to the separate youth-program-locator Vercel project, a Next.js app with basePath /programs in VibeCode/youth-program-locator) and its Fillout listing form
+8. What We Focus On (5 focus items)
+9. Our Coalition (partner chips + meeting schedule)
+10. Where We Work
+11. Get Involved (Formspree form)
+12. Stay in the Loop (Formspree email signup)
+13. Footer
 
 ## Reading Mode Toggle
 The site has a dual-content reading mode:
